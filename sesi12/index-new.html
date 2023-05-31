@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Tambah Data User</h3>
+    <form style="border: 2px solid black; padding:10px; gap:5px;">
+        <div style="padding:10px;">
+            User Name :
+            <input type="text" name="" id="txUSER">
+        </div>
+        <div  style="padding:10px;">
+            Password :
+            <input type="password" name="" id="txPASS1">
+        </div>
+        <div  style="padding:10px;">
+            Verifikasi Password :
+            <input type="password" name="" id="txPASS2">
+        </div>
+        <div  style="padding:10px;">
+            Nama Lengkap :
+            <input type="text" name="" id="txNAMA">
+        </div>
+        <div  style="padding:10px;">
+            Email :
+            <input type="email" name="" id="txEMAIL">
+        </div>
+        <div>
+            <button type="button" onclick="storedta()">Tambah Data</button>
+        </div>
+    </form>
+<script>
+    function storedta(){
+        let target="https://webpro.ptov.my.id/api/curduser.php?aksi=get";
+        let nama = document.getElementById(txNAMA).value;
+        let email = document.getElementById(txEMAIL).value;
+        let username = document.getElementById(txUSER).value;
+        let pass1 = document.getElementById(txPASS1).value;
+        let pass2 = document.getElementById(txPASS2).value;
+        let params ="nama"+nama+"&email"+email+"&username"+username+"&pass1"+pass1+"&pass2"+pass2;
+
+        const storedta = new XMLHttpRequest();
+        storedta.open("POST",target,true);
+        storedta.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        storedta.send(params);
+        storedta.onload = function(){
+            console.log(this.responseText);
+        }
+    }
+</script>
+</body>
+
+</html>
