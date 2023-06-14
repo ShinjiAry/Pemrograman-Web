@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.0.min.js"></script>
+</head>
+<body>
+
+    <h3>Judul</h3>
+    <div id="pesan1">Isi ID pesan 1</div>
+    <div class="pesan1">Isi Class Pesan 1</div>
+
+    <h1>Judul</h1>
+    <div id="pesan2">ID pesan</div>
+    <div class="pesan2">Deskripsi Pesan</div> 
+
+    <script>
+        $(function(){
+            $("h3").html("Isi dari Judul di ganti");
+            $("#pesan1").html("Isi ID pesan 1 di ganti");
+            $(".pesan1").html("Isi dari Class Pesan 1 di ganti");
+
+            $("h1").html("How To Join Member Family Rarwr!!");
+            $("#pesan2").html("Let's Join Us!!")
+            $(".pesan2").html("Lorem ipsum dolor sit, amet consectetur adipisicing elit. <span><Recusandae, autem placeat ea magni tempore sint quasi, totam numquam odio suscipit quos? Atque, consequatur!</span>Temporibus molestiae nemo veritatis repellendus quibusdam dicta.")
+        });
+    </script>
+</body>
+</html>
