@@ -1,0 +1,1 @@
+alert("Cotoh Script JavaScript");
