@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Latihan Data JSOn</title>
+</head>
+<body class="container">
+    <div id="tampilkan"></div>
+    
+    <script>
+        let target = "https://webpro.ptov.my.id/api/curduser.php?aksi=get";
+        const bacadta = new XMLHttpRequest();
+
+        bacadta.open("GET", target);
+        bacadta.send();
+
+        bacadta.onload = function(){
+            const jdta = JSON.parse(this.responseText);
+
+            console.log(jdta);
+
+            let tx = '<table class="table my-5"><thead><tr class="table-dark"><td scope="col" class="text-center">No</td><td scope="col" class="text-center">Nama Lengkap</td><td scope="col" class="text-center">Email</td><td scope="col" class="text-center">Gender</td><td scope="col" class="text-center"><a href="latihan01-new.html" class="btn btn-primary">New</a></td></tr></thead>';
+            let no = 1;
+            for (let cx=0; cx<jdta.isi.length; cx++){
+                tx += '<tbody><tr>';
+                tx += '<td scope="row" class="text-center">'+no+'</td>';
+                tx += '<td scope="row" class="text-center">'+jdta.isi[cx][0]+'</td>';
+                tx += '<td scope="row" class="text-center">'+jdta.isi[cx][1]+'</td>';
+                tx += '<td scope="row" class="text-center">'+jdta.isi[cx][2]+'</td>';
+                tx += '<td scope="row" class="text-center"><a href="latihan01-update.html?id='+jdta.isi[cx][3]+'" class="btn btn-success">Update</a> | ';
+                tx += '<a href="latihan01-delete.html?id='+jdta.isi[cx][3]+'" class="btn btn-danger">Delete</a></td>';
+                tx += '</tr></tbody>';
+                no++;
+            }
+            tx += '</table>';
+
+            document.getElementById("tampilkan").innerHTML = tx;
+        }
+    </script>
+</body>
+</html>

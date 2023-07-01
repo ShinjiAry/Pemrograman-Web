@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Tambah Data</title>
+</head>
+<body class="container py-5">
+    <h3>Tambah Data User</h3>
+    <form class="form-control mt-3 p-4">
+        <div>
+            Nama Lengkap :
+            <input class="form-control my-2" type="text" name="" id="txNama">
+        </div>
+        <div>
+            Email :
+            <input class="form-control my-2" type="email" name="" id="txEmail">
+        </div>
+        <div>
+            Username :
+            <input class="form-control my-2" type="text" name="" id="txUsername">
+        </div>
+        <div>
+            Password :
+            <input class="form-control my-2" type="password" name="" id="txPass1">
+        </div>
+        <div>
+            Verifikasi Password :
+            <input class="form-control my-2" type="password" name="" id="txPass2">
+        </div>
+        <div>
+            <button class="btn btn-primary mt-2" type="button" onclick="storedata()">Tambah Data</button>
+        </div>
+    </form>
+
+    <script>
+        function storedata(){
+            let target = "https://webpro.ptov.my.id/api/curduser.php?aksi=store";
+            let nama = document.getElementById("txNama").value;
+            let email = document.getElementById("txEmail").value;
+            let username = document.getElementById("txUsername").value;
+            let pass1 = document.getElementById("txPass1").value;
+            let pass2 = document.getElementById("txPass2").value;
+            let params = "nama="+nama+"&email="+email+"&username="+username+"&pass1="+pass1+"&pass2="+pass2;  
+
+            const storedta = new XMLHttpRequest();
+            storedta.open("POST", target, true);
+            storedta.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            storedta.send(params);
+            storedta.onload = function(){
+                const gdta = JSON.parse(this.responseText);
+                if(gdta.error == 0){
+                    window.location.href='latihan01.html';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
